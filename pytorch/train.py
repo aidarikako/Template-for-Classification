@@ -116,7 +116,7 @@ def eval(eval_loader,model):
         out = model(input_var)
         _, prediction = torch.max(out.data, 1)
         correct = (prediction == targets).sum().item()
-        data_len += inputs[0].data.item()
+        data_len += inputs.shape[0]
         true_len += correct
     acc = true_len/data_len
     return acc
