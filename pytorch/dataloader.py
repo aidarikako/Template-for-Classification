@@ -18,7 +18,6 @@ class MyDataset(data.Dataset):
         self.csv_name = cfg.csv_name 
         self.is_train = train_mode
         self.inp_res = cfg.data_shape
-        #self.pixel_means = cfg.pixel_means
         self.num_class = cfg.num_class
         self.cfg = cfg
 
@@ -32,12 +31,6 @@ class MyDataset(data.Dataset):
             print('trainset len = '.format(len(self.labels)))
         else:
             print('valset len = '.format(len(self.labels)))
-        # if self.is_train:
-        #     self.scale_factor = cfg.scale_factor
-        #     self.rot_factor = cfg.rot_factor
-        #     self.symmetry = cfg.symmetry
-        # with open(cfg.gt_path) as anno_file:   
-        #     self.anno = json.load(anno_file)
 
 
     # def data_augmentation(self, img):
@@ -88,19 +81,15 @@ class MyDataset(data.Dataset):
         image = np.array(image,'float32')
         image /= 255   
 
-        image = cv2.resize(image,(self.inp_res))     
+        image = cv2.resize(image,(self.inp_res))  
+
+        #train dataset has (224,224) and (224,224,4),so we need to change them to (3,224,224) to fit the resnet   
         if len(image.shape) != 3:
             img=np.array([image for i in range(3)])
         else:
-            img=image
-   
-        
-        #img=np.dtype(np.float32)
-        #print(img.shape)
-        #img = np.transpose(img, (2, 0, 1)) # C*H*W    
-        # img[0, :, :].mul_(random.uniform(0.8, 1.2)).clamp_(0, 1)
-        # img[1, :, :].mul_(random.uniform(0.8, 1.2)).clamp_(0, 1)
-        # img[2, :, :].mul_(random.uniform(0.8, 1.2)).clamp_(0, 1)
+            img=image[:,:,0]
+            img=np.array([image for i in range(3)])
+            
         img = torch.from_numpy(img)
         
         return img,label
