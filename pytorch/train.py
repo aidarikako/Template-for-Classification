@@ -72,17 +72,19 @@ def main(args):
         log.write('\t')
         log.write('{:.5f}'.format(lr))
         log.write('\t')
-        log.write('{:.5f}'.format(train_loss/train_loader._len_()))
+        log.write('{:.5f}'.format(train_loss/train_loader.__len__()))
         log.write('\t')
         log.write('{:.5f}'.format(acc))
         log.write('\t')
         log.write('\n')
         log.flush()
-        save_model({
+        filename = 'epoch'+str(epoch + 1) + 'checkpoint.pth.tar'
+        filepath = os.path.join(args.checkpoint, filename)
+        torch.save({
             'epoch': epoch + 1,
             'state_dict': model.state_dict(),
             'optimizer' : optimizer.state_dict(),
-        }, checkpoint=args.checkpoint)
+        }, filepath)
 
     log.close()
 
