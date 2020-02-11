@@ -77,7 +77,7 @@ You can change the train config as you like.
 
 #### For testing
 
-Waiting for update.......
+Keep updating.......
 
 
 
@@ -85,7 +85,7 @@ Waiting for update.......
 
 ## tensorflow2
 
-Waiting for update.......
+Keep updating.......
 
 
 
