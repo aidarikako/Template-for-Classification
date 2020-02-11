@@ -44,21 +44,21 @@ Make your dir as follow:
 ```
 ${Template-for-Classification}
 |-- trainset
-|		|-- images
-|       | 		|--xxxxx.png
-|		| 		|--...
+|       |-- images
+|       |       |--xxxxx.png
+|       |       |--...
 |   `   |-- label.csv
 |
 |-- valset
-|		|-- images
-|       | 		|--xxxxx.png
-|		| 		|--...
+|       |-- images
+|       |       |--xxxxx.png
+|       |       |--...
 |   `   |-- label.csv
 |
 |-- testset
-|		|-- images
-|       | 		|--xxxxx.png
-|		| 		|--...
+|       |-- images
+|       |       |--xxxxx.png
+|       |       |--...
 |   `   |-- upload.csv
 |
 |-- pytorch
