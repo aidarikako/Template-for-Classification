@@ -10,16 +10,19 @@ The template contains pytorch and tensorflow2. And the code is a template implem
 
 
 
-
-
-
-
 ## Contents
 
-1. [pytorch](#pytorch)
-2. [tensorflow2](#tensorflow2)
+1. [note](#note)
+2. [pytorch](#pytorch)
+3. [tensorflow2](#tensorflow2)
 
 
+
+## note
+
+**Networks**: I use resnet as the networks' backbone. And I remove the last two layers, connect with a globalNet which use to fuse multi-scale features. 
+
+**Data preprocessing**: Because of the dataset's feature  of ["X光片检测患者肺炎''](https://www.flyai.com/d/ChestXray02), so I only do random rotation([-15^o^,15^o^]) for the data augmentation.
 
 
 
@@ -88,8 +91,6 @@ python test.py -c 'your checkpoint's name'
 ```
 
 You can change the test config as you like and your prediction results will save at  upload.csv.
-
-
 
 
 
