@@ -22,7 +22,7 @@ The template contains pytorch and tensorflow2. And the code is a template implem
 
 **Networks**: I use resnet as the networks' backbone. And I remove the last two layers, connect with a globalNet which use to fuse multi-scale features. 
 
-**Data preprocessing**: Because of the dataset's feature  of ["X光片检测患者肺炎''](https://www.flyai.com/d/ChestXray02), so I only do random rotation([-15^o^,15^o^]) for the data augmentation.
+**Data preprocessing**: Because of the dataset's feature  of ["X光片检测患者肺炎''](https://www.flyai.com/d/ChestXray02), so I only do random rotation([-15<sup>o</sup>,15<sup>o</sup>]) for the data augmentation.
 
 
 
