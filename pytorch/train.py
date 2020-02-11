@@ -65,7 +65,7 @@ def main(args):
         print('epoch {},lr={}'.format(epoch,lr))
         print('begin the {}th epoch'.format(epoch))
         train_loss=train(train_loader,model,criterion,optimizer)
-        print('train_loss:{:.5f}'.format(train_loss))
+        print('avg_train_loss:{:.5f}'.format(train_loss/train_loader.__len__()))
         acc=eval(eval_loader,model)
         print('accuracy:{:.5f}'.format(acc))
         log.write('{}'.format(epoch))
@@ -101,7 +101,7 @@ def train(train_loader,model,criterion,optimizer):
         loss_record += loss.data.item()
         losses += loss.data.item()
         if(i%10==0 and i!=0):
-            print('step {},10_loss_loss:{:.5f}'.format(i,loss_record/10))
+            print('step {},avg_10_loss:{:.5f}'.format(i,loss_record/10))
             loss_record = 0.            
         optimizer.zero_grad()
         loss.backward()
