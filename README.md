@@ -41,31 +41,33 @@ Import  python37.yml to your own anaconda env.
 
 Make your dir as follow:
 
-+ Template-for-Classification
+```
+${Template-for-Classification}
+|-- trainset
+|		|-- images
+|       | 		|--xxxxx.png
+|		| 		|--...
+|   `   |-- label.csv
+|
+|-- valset
+|		|-- images
+|       | 		|--xxxxx.png
+|		| 		|--...
+|   `   |-- label.csv
+|
+|-- testset
+|		|-- images
+|       | 		|--xxxxx.png
+|		| 		|--...
+|   `   |-- upload.csv
+|
+|-- pytorch
 
-   + trainset
+```
 
-      + images
 
-        label.csv
 
-   + valset
-
-      + images
-
-     ​       label.csv
-
-   + testset
-
-      + images
-
-        upload.csv
-
-  + pytorch
-
-  
-
-Activate your anaconda env(like python37),and train your model.
+Activate your anaconda env(like python37), and train your model.
 
 ```
 python train.py
@@ -77,7 +79,15 @@ You can change the train config as you like.
 
 #### For testing
 
-Keep updating.......
+After you train your model, go to the checkpoint folder,and find the checkpoint name. 
+
+You can use your model to test  as follow:
+
+```
+python test.py -c 'your checkpoint's name'
+```
+
+You can change the test config as you like and your prediction results will save at  upload.csv.
 
 
 

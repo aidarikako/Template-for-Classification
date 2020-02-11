@@ -35,12 +35,12 @@ def main(args):
     
 
     train_loader = torch.utils.data.DataLoader(
-        MyDataset(train_cfg,train_mode=True),
+        MyDataset(train_cfg,train_mode=0),
         batch_size=train_cfg.batch_size, shuffle=True,
         num_workers=args.workers, pin_memory=True)
 
     eval_loader = torch.utils.data.DataLoader(
-        MyDataset(val_cfg,train_mode=False),
+        MyDataset(val_cfg,train_mode=1),
         batch_size=val_cfg.batch_size, shuffle=False,
         num_workers=args.workers, pin_memory=True)
     
@@ -110,17 +110,18 @@ def train(train_loader,model,criterion,optimizer):
 
 def eval(eval_loader,model):
     model.eval()
-    print('testing......')
+    print('eval......')
     data_len=0
     true_len=0
-    for i, (inputs, targets) in tqdm(enumerate(eval_loader)):
-        input_var = torch.autograd.Variable(inputs)
-        out = model(input_var)
-        _, prediction = torch.max(out.data, 1)
-        correct = (prediction == targets).sum().item()
-        data_len += inputs.shape[0]
-        true_len += correct
-    acc = true_len/data_len
+    with torch.no_grad():
+        for i, (inputs, targets) in tqdm(enumerate(eval_loader)):
+            input_var = torch.autograd.Variable(inputs)
+            out = model(input_var)
+            _, prediction = torch.max(out.data, 1)
+            correct = (prediction == targets).sum().item()
+            data_len += inputs.shape[0]
+            true_len += correct
+        acc = true_len/data_len
     return acc
     
     
