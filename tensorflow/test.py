@@ -23,8 +23,6 @@ def main(args):
 
     print('testing.........')
     for i, (inputs,targets) in tqdm(enumerate(test_data)):
-        if(i>=5):
-            break
         out = model(inputs)
         out = out.numpy()
         prediction = numpy.argmax(out, axis=1)

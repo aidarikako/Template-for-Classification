@@ -82,8 +82,6 @@ def train(train_data,model,criterion,optimizer):
     losses = 0.
     loss_record=0.
     for i,(inputs,targets) in enumerate(train_data):
-        if(i>=2):
-            break
         with tf.GradientTape() as tape:
             out = model(inputs)
             loss = criterion(targets,out)
@@ -103,8 +101,6 @@ def eval(val_data,model):
     true_len=0
     print('eval......')
     for i,(inputs,targets) in enumerate(val_data):
-        if(i>=2):
-            break
         out = model(inputs)
         out = out.numpy()
         targets = targets.numpy()
