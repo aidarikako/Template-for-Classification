@@ -43,15 +43,6 @@ def main(args):
     print('successful write the predict results!')
     
        
-            
-
-
-
-
-
-
-
-
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='PyTorch Testing')

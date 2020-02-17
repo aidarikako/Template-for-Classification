@@ -24,7 +24,7 @@ The template contains pytorch and tensorflow2. And the code is a template implem
 
 **Data preprocessing**: Because of the dataset's feature  of ["X光片检测患者肺炎''](https://www.flyai.com/d/ChestXray02), so I only do random rotation([-15<sup>o</sup>,15<sup>o</sup>]) for the data augmentation.
 
-
+***attention***: Because I am a beginner in tensorflow, so I only use resnet50 as the networks and I don't use data augmentation. But don't worry, the template of tensorflow2 works. 
 
 ## pytorch
 
@@ -90,23 +90,85 @@ You can use your model to test  as follow:
 python test.py -c 'your checkpoint's name'
 ```
 
+example: if your checkpoint's file name is 'epoch1checkpoint.pth.tar',then your checkpoint name =
+
+'epoch1checkpoint',just as follow:
+
+```
+python test.py -c 'epoch1checkpoint'
+```
+
 You can change the test config as you like and your prediction results will save at  upload.csv.
 
 
 
 ## tensorflow2
 
-Keep updating.......
+#### For training
 
+Clone the code from github and cd the pytorch folder.
 
+```
+git clone https://github.com/aidarikako/Template-for-Classification.git
+```
 
+```
+cd tensorflow
+```
 
+Import  python37.yml to your own anaconda env. 
 
+Make your dir as follow:
 
+```
+${Template-for-Classification}
+|-- trainset
+|       |-- images
+|       |       |--xxxxx.png
+|       |       |--...
+|   `   |-- label.csv
+|
+|-- valset
+|       |-- images
+|       |       |--xxxxx.png
+|       |       |--...
+|   `   |-- label.csv
+|
+|-- testset
+|       |-- images
+|       |       |--xxxxx.png
+|       |       |--...
+|   `   |-- upload.csv
+|
+|-- tensorflow
 
+```
 
+Activate your anaconda env(like python37), and train your model.
 
+```
+python train.py
+```
 
+You can change the train config as you like.
 
+#### For testing
 
+After you train your model, go to the checkpoint folder,and find the checkpoint name. 
+
+You can use your model to test  as follow:
+
+```
+python test.py -c 'your checkpoint's name'
+```
+
+example: if your checkpoint's file name is 'epoch1checkpoint.h5',then your checkpoint name =
+
+'epoch1checkpoint',just as follow:
+
+```
+python test.py -c 'epoch1checkpoint'
+```
+
+You can change the test config as you like and your prediction results will save at  upload.csv.
 
